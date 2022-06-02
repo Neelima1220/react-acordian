@@ -1,7 +1,8 @@
 import React from 'react';
+import Accordion from './compoents/accordian';
 import './style.css';
 
-const accDara = [
+const accData = [
   { title: 'First Accordion', content: 'First Accordion content' },
   { title: 'Second Accordion', content: 'Second Accordion content' },
   {
@@ -12,10 +13,8 @@ const accDara = [
 ];
 
 export default function App() {
-  return (
-    <div>
-      <h1>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic happen :)</p>
-    </div>
-  );
+  const [data, setData] = React.useState(accData);
+  return data.map((item, index) => {
+    return <Accordion item={item} index={index} />;
+  });
 }
