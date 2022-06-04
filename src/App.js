@@ -29,8 +29,6 @@ export default function App() {
       return { ...item, isOpen: false };
     });
 
-    console.log(tempAcc, tempAcc[i].isOpen);
-
     if (tempAcc[i].isOpen === true) {
       tempAcc[i].isOpen = false;
     } else {
