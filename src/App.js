@@ -40,7 +40,7 @@ export default function App() {
     return (
       <Accordion
         item={item}
-        index={index}
+        key={index}
         onClick={() => handleAcc(index)}
         isOpen={item.isOpen}
       />
