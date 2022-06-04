@@ -1,8 +1,6 @@
 import React from 'react';
 
-const Accordion = ({ item, index, isOpen, onClick }) => {
-  const [selected, setSelected] = React.useState(null);
-
+const Accordion = ({ item, isOpen, onClick }) => {
   return (
     <>
       <h1 onClick={onClick}>{item.title}</h1>

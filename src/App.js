@@ -7,18 +7,15 @@ const accData = [
   {
     title: 'First Accordion',
     content: 'First Accordion content',
-    isOpen: false,
   },
   {
     title: 'Second Accordion',
     content: 'Second Accordion content',
-    isOpen: false,
   },
   {
     title: 'Third Accordion',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    isOpen: false,
   },
 ];
 
@@ -27,7 +24,11 @@ export default function App() {
   const [selected, setSelected] = React.useState(false);
 
   const handleAcc = (i) => {
-    const tempAcc = cloneDeep(accData);
+    let tempAcc = cloneDeep(accData);
+    tempAcc = tempAcc.map((item) => {
+      return { ...item, isOpen: false };
+    });
+
     console.log(tempAcc, tempAcc[i].isOpen);
 
     if (tempAcc[i].isOpen === true) {
