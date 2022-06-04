@@ -24,11 +24,17 @@ const accData = [
 
 export default function App() {
   const [data, setData] = React.useState(accData);
+  const [selected, setSelected] = React.useState(false);
 
   const handleAcc = (i) => {
     const tempAcc = cloneDeep(accData);
-    console.log(tempAcc, 'tempAcc');
-    tempAcc[i].isOpen = true;
+    console.log(tempAcc, tempAcc[i].isOpen);
+
+    if (tempAcc[i].isOpen === true) {
+      tempAcc[i].isOpen = false;
+    } else {
+      tempAcc[i].isOpen = true;
+    }
     setData(tempAcc);
   };
   return data.map((item, index) => {
