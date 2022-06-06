@@ -5,16 +5,19 @@ import './style.css';
 
 const accData = [
   {
+    id: 0,
     title: 'First Accordion',
     content: 'First Accordion content',
     isOpen: false,
   },
   {
+    id: 1,
     title: 'Second Accordion',
     content: 'Second Accordion content',
     isOpen: false,
   },
   {
+    id: 2,
     title: 'Third Accordion',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -24,14 +27,20 @@ const accData = [
 
 export default function App() {
   const [data, setData] = React.useState(accData);
-  const [selected, setSelected] = React.useState(false);
+  const [selected, setSelected] = React.useState(null);
+  const [show, setShow] = React.useState(false);
 
-  const handleAcc = (x, i) => {
+  const handleAcc = (item, i) => {
     let tempAcc = cloneDeep(accData);
-    console.log(tempAcc[i].isOpen);
-    tempAcc[i].isOpen = !tempAcc[i].isOpen;
-    console.log(tempAcc);
-
+    if (item.id === selected) {
+      tempAcc[item.id].isOpen = !show;
+      setSelected(i);
+      setShow(tempAcc[item.id].isOpen);
+    } else {
+      tempAcc[i].isOpen = true;
+      setSelected(i);
+      setShow(tempAcc[item.id].isOpen);
+    }
     setData(tempAcc);
   };
   return data.map((item, index) => {
@@ -39,7 +48,7 @@ export default function App() {
       <Accordion
         item={item}
         key={index}
-        onClick={(e) => handleAcc(e, index)}
+        onClick={() => handleAcc(item, index)}
         isOpen={item.isOpen}
       />
     );
