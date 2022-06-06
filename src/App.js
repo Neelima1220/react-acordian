@@ -7,15 +7,18 @@ const accData = [
   {
     title: 'First Accordion',
     content: 'First Accordion content',
+    isOpen: false,
   },
   {
     title: 'Second Accordion',
     content: 'Second Accordion content',
+    isOpen: false,
   },
   {
     title: 'Third Accordion',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    isOpen: false,
   },
 ];
 
@@ -23,17 +26,12 @@ export default function App() {
   const [data, setData] = React.useState(accData);
   const [selected, setSelected] = React.useState(false);
 
-  const handleAcc = (i) => {
+  const handleAcc = (x, i) => {
     let tempAcc = cloneDeep(accData);
-    tempAcc = tempAcc.map((item) => {
-      return { ...item, isOpen: false };
-    });
+    console.log(tempAcc[i].isOpen);
+    tempAcc[i].isOpen = !tempAcc[i].isOpen;
+    console.log(tempAcc);
 
-    if (tempAcc[i].isOpen === true) {
-      tempAcc[i].isOpen = false;
-    } else {
-      tempAcc[i].isOpen = true;
-    }
     setData(tempAcc);
   };
   return data.map((item, index) => {
@@ -41,7 +39,7 @@ export default function App() {
       <Accordion
         item={item}
         key={index}
-        onClick={() => handleAcc(index)}
+        onClick={(e) => handleAcc(e, index)}
         isOpen={item.isOpen}
       />
     );
