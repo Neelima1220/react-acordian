@@ -138,22 +138,20 @@ export default function App() {
 //   const [selected, setSelected] = React.useState(null);
 //   const [show, setShow] = React.useState(false);
 
-//   // const handleAcc = (item, i) => {
-//   //   let tempAcc = cloneDeep(accData);
-//   //   if (item.id === selected) {
-//   //     tempAcc[item.id].isOpen = !show;
-//   //     setSelected(i);
-//   //     setShow(tempAcc[item.id].isOpen);
-//   //   } else {
-//   //     tempAcc[i].isOpen = true;
-//   //     setSelected(i);
-//   //     setShow(tempAcc[item.id].isOpen);
-//   //   }
-//   //   setData(tempAcc);
-//   // };
 //   const handleAcc = (item, i) => {
-//     console.log(item, i);
+//     let tempAcc = cloneDeep(accData);
+//     if (item.id === selected) {
+//       tempAcc[item.id].isOpen = !show;
+//       setSelected(i);
+//       setShow(tempAcc[item.id].isOpen);
+//     } else {
+//       tempAcc[i].isOpen = true;
+//       setSelected(i);
+//       setShow(tempAcc[item.id].isOpen);
+//     }
+//     setData(tempAcc);
 //   };
+
 //   return data.map((item, index) => {
 //     return (
 //       <Accordion
@@ -165,3 +163,14 @@ export default function App() {
 //     );
 //   });
 // }
+
+// const Accordion = ({ item, isOpen, onClick }) => {
+//   return (
+//     <>
+//       <h1 onClick={onClick}>{item.title}</h1>
+//       <p style={{ display: isOpen ? 'block' : 'none' }}>{item.content}</p>
+//     </>
+//   );
+// };
+
+// export default Accordion;
