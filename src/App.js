@@ -23,35 +23,73 @@ const accData = [
   },
 ];
 
-// 1st way
+// 4th way
 
 export default function App() {
   const [data, setData] = useState(accData);
 
+  const handleClick = (i) => {
+    const tempData = [...data];
+    const newData = tempData.map((item, index) => {
+      if (index === i) {
+        if (item.show === true) {
+          return { ...item, show: false };
+        } else {
+          return { ...item, show: true };
+        }
+      } else {
+        return { ...item };
+      }
+    });
+    setData(newData);
+  };
+
   return (
     data.length > 0 &&
     data.map((item, index) => {
-      return <Accordian title={item.title} content={item.content} />;
+      return (
+        <div>
+          <div key={index}>
+            <h1 onClick={() => handleClick(index)}>{item.title} </h1>
+            <p style={{ display: item.show ? 'block' : 'none' }}>
+              {item.content}{' '}
+            </p>
+          </div>{' '}
+        </div>
+      );
     })
   );
 }
 
-const Accordian = ({ title, content }) => {
-  const [show, setShow] = useState(false);
-  const handleClick = () => {
-    if (show === true) {
-      setShow(false);
-    } else {
-      setShow(true);
-    }
-  };
-  return (
-    <div>
-      <h1 onClick={handleClick}>{title} </h1>
-      <p style={{ display: show ? 'block' : 'none' }}>{content} </p>
-    </div>
-  );
-};
+// 1st way
+
+// export default function App() {
+//   const [data, setData] = useState(accData);
+
+//   return (
+//     data.length > 0 &&
+//     data.map((item, index) => {
+//       return <Accordian title={item.title} content={item.content} />;
+//     })
+//   );
+// }
+
+// const Accordian = ({ title, content }) => {
+//   const [show, setShow] = useState(false);
+//   const handleClick = () => {
+//     if (show === true) {
+//       setShow(false);
+//     } else {
+//       setShow(true);
+//     }
+//   };
+//   return (
+//     <div>
+//       <h1 onClick={handleClick}>{title} </h1>
+//       <p style={{ display: show ? 'block' : 'none' }}>{content} </p>
+//     </div>
+//   );
+// };
 
 // 2nd way
 
